@@ -1,4 +1,4 @@
-#Controlador de Pantalla de Cristal Líquido (LCD) para plataforma Nucleo-F4ZI
+# Controlador de Pantalla de Cristal Líquido (LCD) para plataforma Nucleo-F4ZI
 
 Autor: Guillermo F. Caporaletti <gfcaporaletti@undav.edu.ar>
 Fecha: Septiembre 2022
@@ -13,7 +13,7 @@ La librería desarrollada tiene los siguientes archivos:
 - **"LCD_stm32f4xx_nucleo.c"**: Contiene las instrucciones HAL de acceso al hardware (puerto específico). 
 - **"API_LCD.c"**: Contiene los comandos que serán utilizados por el programa que necesite acceder a la pantalla, sin el detalle del hardware. Llama a las funciones de "LCD_stm32f4xx_nucleo.c" para concretar las acciones.
 
-##Modo de uso
+## Modo de uso
 
 En el módulo de puerto específico “LCD_stm32f4xx.c” se encuentran definidos los pines utilizados (cada pin se identifica como un puerto GPIO de A a K, más un número de pin de 0 a 15). Pueden cambiarse por otros; aunque debe garantizarse que los clocks de los puertos utilizados sean activados (esto se hace dentro de la función LCD_init_stm32f4xx() de este módulo).
 
@@ -37,7 +37,7 @@ Los comandos del módulo “API_LCD.c” a utilizar por el programa principal so
 - void LCD_createChar(uint8_t, uint8_t[]);
 - void LCD_print(char *);
 
-##Comentario sobre la implementación
+## Comentario sobre la implementación
 
 Un problema extra que surgió fue lograr la **compatibilidad de tensiones** entre el MPU STM32F429 y el LCD1602 utilizado. El MPU utiliza una tensión de 3,3V de salida en los pines, mientras que el display utilizado requería valores lógicos de TTL 5V. Consultado el Manual de referencia STM32Fxx (RM0090, pg. 268, Tabla 35 y Figura 25), configuramos los pines de salida como _Open Drain_ (OD), de modo de imponer un 0 pero dejar el pin flotante en un 1. Esto logró que la tensión de salida alcance los 5V en 1, alcanzando así la compatibilidad con el LCD1602. La tensión de 5V en 1 es forzada por el LCD, y la tensión de 0V en 0 por el STM32Fxx. 
 
