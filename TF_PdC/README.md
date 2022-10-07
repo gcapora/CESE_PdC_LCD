@@ -2,7 +2,7 @@
 
 Autor: Guillermo F. Caporaletti <gfcaporaletti@undav.edu.ar>
 Fecha: Septiembre 2022
-Versión: 1.0
+Versión: 1.1
 
 El **controlador para LCD** fue desarrollado en el curso de Protocolos de Comunicaciones de la Carrera de Especialización en Sistemas Embebidos. Se aplica a las pantallas controladas por el **_chipset_ HD44780 de Hitachi** (o compatible). La librería fue implementada con una pantalla 1602 (16 columnas y 2 filas), aunque debería funcionar con pantallas de hasta 4 filas. Permite una comunicación paralela entre el MCU y el HD44780 en modo 8 pines y 4 pines.
 
